@@ -1,0 +1,22 @@
+{
+  "name": "ts-jwt-handler",
+  "version": "1.0.0",
+  "description": "Utility for issuing, and validating JWTs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-mocha ./src/**/*.test.ts"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/jsonwebtoken": "^8.3.0",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "jsonwebtoken": "^8.4.0",
+    "mocha": "^5.2.0",
+    "ts-dotnet-errors": "^1.0.7",
+    "ts-mocha": "^2.0.0",
+    "typescript": "^3.1.6"
+  }
+}
