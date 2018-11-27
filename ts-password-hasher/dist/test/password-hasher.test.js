@@ -7,49 +7,58 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 require("mocha");
-const chai = __importStar(require("chai"));
-const chaiAsPromised = __importStar(require("chai-as-promised"));
 const chai_1 = require("chai");
 const ts_dotnet_errors_1 = require("ts-dotnet-errors");
 const password_hasher_1 = require("../password-hasher");
 describe('PasswordHasher', () => {
-    /**
-     * Need to register middleware
-     */
-    before(() => {
-        chai.use(chaiAsPromised);
-    });
     describe('generateHash()', () => __awaiter(this, void 0, void 0, function* () {
         it('throws an error when no password passed', () => __awaiter(this, void 0, void 0, function* () {
-            chai_1.expect(password_hasher_1.PasswordHasher.generateHash(undefined)).to.be.rejectedWith(ts_dotnet_errors_1.ArgumentNullError, 'password');
+            let error = null;
+            try {
+                yield password_hasher_1.PasswordHasher.generateHash(undefined);
+            }
+            catch (err) {
+                error = err;
+            }
+            chai_1.expect(error).to.be.instanceOf(ts_dotnet_errors_1.ArgumentNullError);
         }));
         it('generates a hash when a password is given', () => __awaiter(this, void 0, void 0, function* () {
-            chai_1.expect(password_hasher_1.PasswordHasher.generateHash('password')).to.eventually.be.fulfilled;
+            let hash = yield password_hasher_1.PasswordHasher.generateHash('password');
+            chai_1.expect(hash).to.be.a('string');
         }));
     }));
     describe('validateHash()', () => __awaiter(this, void 0, void 0, function* () {
         it('throws an error when no password', () => __awaiter(this, void 0, void 0, function* () {
-            chai_1.expect(password_hasher_1.PasswordHasher.validateHash(undefined, 'hash')).to.be.rejectedWith(ts_dotnet_errors_1.ArgumentNullError, 'password');
+            let error = null;
+            try {
+                yield password_hasher_1.PasswordHasher.validateHash(undefined, 'hash');
+            }
+            catch (err) {
+                error = err;
+            }
+            chai_1.expect(error).to.be.instanceOf(ts_dotnet_errors_1.ArgumentNullError);
         }));
         it('throws an error when no hash is given', () => __awaiter(this, void 0, void 0, function* () {
-            chai_1.expect(password_hasher_1.PasswordHasher.validateHash('pass', undefined)).to.be.rejectedWith(ts_dotnet_errors_1.ArgumentNullError, 'hash');
+            let error = null;
+            try {
+                yield password_hasher_1.PasswordHasher.validateHash('pass', undefined);
+            }
+            catch (err) {
+                error = err;
+            }
+            chai_1.expect(error).to.be.instanceOf(ts_dotnet_errors_1.ArgumentNullError);
         }));
         it('returns true for a valid password', () => __awaiter(this, void 0, void 0, function* () {
             let hash = yield password_hasher_1.PasswordHasher.generateHash('password');
-            chai_1.expect(password_hasher_1.PasswordHasher.validateHash('password', hash)).to.eventually.be.fulfilled.and.be.true;
+            let result = yield password_hasher_1.PasswordHasher.validateHash('password', hash);
+            chai_1.expect(result).to.be.true;
         }));
         it('rejects a bad password', () => __awaiter(this, void 0, void 0, function* () {
             let hash = yield password_hasher_1.PasswordHasher.generateHash('password');
-            chai_1.expect(password_hasher_1.PasswordHasher.validateHash('notit', hash)).to.eventually.be.fulfilled.and.be.false;
+            let result = yield password_hasher_1.PasswordHasher.validateHash('password2', hash);
+            chai_1.expect(result).to.be.false;
         }));
     }));
 });

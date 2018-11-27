@@ -1,7 +1,7 @@
 Password-Hasher
 ---
 
-Allows for generating hashes from passwords, then later re-verifying these hashes. 
+Utility for generating and verifying password hashes. Written in Typescript, and uses bcryptjs. The number of salt rounds is hard coded at 10 but this is the current recommendation, and shouldn't be an issue.
 
 How to Use
 ---

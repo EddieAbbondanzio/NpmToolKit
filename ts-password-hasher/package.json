@@ -1,5 +1,5 @@
 {
-  "name": "password-hasher",
+  "name": "ts-password-hasher",
   "version": "1.0.0",
   "description": "Password hasher that allows for hashing, and verifying passwords using Bcrypt.",
   "main": "index.js",

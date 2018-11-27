@@ -24,6 +24,10 @@ const ts_dotnet_errors_1 = require("ts-dotnet-errors");
 var PasswordHasher;
 (function (PasswordHasher) {
     /**
+     * 10 is the recommended # of rounds by BCrypt.
+     */
+    const SALT_ROUNDS = 10;
+    /**
      * Generate a new password hash from a passed in hash.
      * @param password The password to hash
      */
@@ -32,8 +36,7 @@ var PasswordHasher;
             if (password == null) {
                 throw new ts_dotnet_errors_1.ArgumentNullError('password');
             }
-            //The # is saltRounds. Currently 10 is default.
-            return yield BcryptJS.hash(password, 10);
+            return yield BcryptJS.hash(password, SALT_ROUNDS);
         });
     }
     PasswordHasher.generateHash = generateHash;
