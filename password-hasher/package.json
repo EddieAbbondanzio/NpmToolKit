@@ -1,0 +1,23 @@
+{
+  "name": "password-hasher",
+  "version": "1.0.0",
+  "description": "Password hasher that allows for hashing, and verifying passwords using Bcrypt.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "test": "ts-mocha ./src/test/**/*.test.ts"
+  },
+  "author": "Eddie Abbondanzio",
+  "license": "MIT",
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "bcryptjs": "^2.4.3",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "ts-dotnet-errors": "^1.0.7",
+    "ts-mocha": "^2.0.0",
+    "typescript": "^3.1.6"
+  }
+}
