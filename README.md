@@ -13,3 +13,7 @@ A password hasher that allows for generating hashes of passwords that can be use
 ### ts-jwt-handler
 
 A json web token manager. Allows for generating json web tokens that can be used authenticate user identities. Json web tokens are small base-64 encoded strings that have several properties such as a payload, audience, and time to live. They are signed by the server and cannot be faked unless the secret signature is leaked. 
+
+### ts-server-config
+
+Configuration file loader that can handle three different configs. This allows for a unique configuration for production, testing, and development. File loading is done asynchronously and validation will be performed on the value loaded in.

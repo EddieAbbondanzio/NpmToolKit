@@ -1,0 +1,25 @@
+{
+  "name": "ts-server-config",
+  "version": "1.0.0",
+  "description": "A configuration manager that allows for having seperate configs for production, development, and testing. Includes data-persistance by saving configs to a JSON file.",
+  "main": ".dist/index.js",
+  "scripts": {
+    "start": "node ./dist/index.js",
+    "build": "tsc",
+    "test": "ts-mocha ./src/tests/**/*.test.ts"
+  },
+  "author": "Eddie Abbondanzio",
+  "license": "MIT",
+  "dependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "ts-dotnet-errors": "^1.0.7",
+    "ts-mocha": "^2.0.0",
+    "typescript": "^3.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.10"
+  }
+}
