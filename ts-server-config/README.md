@@ -11,13 +11,13 @@ File Structure
 //config.json
 {
     "production": {
-        //production config here
+        "foo": "bar"
     },
     "development": {
-        //Development config here
+        "foo": "baz"
     },
     "test": {
-        //Test config here
+        "foo": "cat"
     }
 }
 ```
@@ -26,5 +26,14 @@ How To Use
 ---
 
 ```js
+class Config implements IConfig {
+    public configType: ConfigType;
+    
+    public foo: string;
+}
+
 let config: Config = await ConfigHandler.loadConfig(Config, ConfigType.Development);
+
+console.log(config.foo);    //Outputs: "baz"
+
 ```
